@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title('Uber pickups in NYC')
+st.title('Bay Wheels trip data')
 
 DATE_COLUMN = 'date/time'
 DATA_URL = ('dataset\Bay_Wheels_trip_data_for_public_use2020.csv')
