@@ -5,7 +5,7 @@ import numpy as np
 st.title('Bay Wheels trip data')
 
 DATE_COLUMN = 'date/time'
-DATA_URL = ('dataset\Bay_Wheels_trip_data_for_public_use2020.csv')
+DATA_URL = ('dataset/Bay_Wheels_trip_data_for_public_use2020.csv')
 
 #@st.cache
 def load_data(nrows):
