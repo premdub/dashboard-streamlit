@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter
+import matplotlib.dates as mdates
+import seaborn as sb
+from pandas.api.types import CategoricalDtype
+import matplotlib 
+import inline
+import splot
+import containers
 import seaborn as sns
+import pydeck as pdk
 
 st.title('Bay Wheels trip data')
 
@@ -57,18 +68,12 @@ data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
-if st.checkbox('Show raw data_'):
-    st.subheader('Raw data_')
-    st.write(data)
-st.subheader('Count of Accidents per hour')
-hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
-st.bar_chart(hist_values)
 
 st.subheader('US States -Ranked by Population 2022')
 st.subheader('Map of all States:Car accidents countrywide')
 st.map(filtered_data)
 #------------------------------------------------
-import pydeck as pdk
+#import pydeck as pdk
 st.subheader('Car accidents countrywide, within the USA')
 df = pd.DataFrame(
    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
@@ -103,17 +108,7 @@ st.pydeck_chart(pdk.Deck(
     ],
 ))
 #---------------------------
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter
-import matplotlib.dates as mdates
-import seaborn as sb
-from pandas.api.types import CategoricalDtype
-import matplotlib 
-import inline
-import splot
-import containers
+
 DATA_URL = ('dataset/US_Accidents_Dec21.csv')
 data = pd.read_csv(DATA_URL)
 data_clean = data.copy()
@@ -134,12 +129,12 @@ hour = data[['Start_Time','ID']].groupby('Start_Time').count().reset_index()
 hour['cases'] = ((hour['ID']/len(data_clean['ID']))*100).apply(lambda x: '{0:.2f}%'.format(x))
 
 fig, ax = plt.subplots(figsize=(16,5))
-#ax.spines['top'].set_visible(False) # removing the top spine of the border
-#ax.spines['right'].set_visible(False) # removing the right spine of the border
+ax.spines['top'].set_visible(False) # removing the top spine of the border
+ax.spines['right'].set_visible(False) # removing the right spine of the border
 splot = sb.barplot(data = hour,x='Start_Time',y='ID',color=sb.color_palette()[0])
 plt.bar_label(splot.containers[0],labels=hour['cases'],fontsize=15);
-plt.xlabel('Hour of the day',fontsize=13)
-plt.ylabel('Count',fontsize=13)
-plt.title('Count of acidents per hour',fontsize=8);
+plt.xlabel('Hour of the day',fontsize=20)
+plt.ylabel('Count',fontsize=20)
+plt.title('Count of acidents per hour',fontsize=29);
 
 st.pyplot(fig)
