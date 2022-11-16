@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter
 import matplotlib.dates as mdates
 import seaborn as sb
@@ -14,6 +13,7 @@ import splot
 import containers
 import seaborn as sns
 import pydeck as pdk
+import matplotlib.pyplot as plt
 
 st.title('Bay Wheels trip data')
 
