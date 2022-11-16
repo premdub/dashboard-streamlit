@@ -7,8 +7,8 @@ from matplotlib.dates import DateFormatter
 import matplotlib.dates as mdates
 import seaborn as sb
 from pandas.api.types import CategoricalDtype
-import matplotlib 
-import inline
+#import matplotlib 
+#import inline
 import splot
 import containers
 import seaborn as sns
