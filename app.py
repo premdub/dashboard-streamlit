@@ -17,6 +17,7 @@ import pip
 pip.main(["install","matplotlib"])
 
 import matplotlib.pyplot as plt
+import sys
 import pip
 pip.main(["install","matplotlib"])
 st.title('Bay Wheels trip data')
