@@ -117,17 +117,19 @@ data_clean['Start_Time'] = pd.to_datetime(data_clean['Start_Time'])
 data_clean['End_Time'] = pd.to_datetime(data_clean['End_Time'])
 data_clean['Weather_Timestamp'] = pd.to_datetime(data_clean['Weather_Timestamp'])
 
+# let's get the start time in terms of day,hour and date
 start_year = data_clean['Start_Time'].dt.strftime('%Y') # extracting year from date
 start_hour = data_clean['Start_Time'].dt.strftime('%H') # extracting hour from date
 start_day = data_clean['Start_Time'].dt.strftime('%A') # extracting day from date
 start_month = data_clean['Start_Time'].dt.strftime('%b') # extracting month from date
 
-
+#define the hour of the day with most accidents cases
 data = pd.DataFrame(start_hour.sort_values())
 data['ID'] = 1
 hour = data[['Start_Time','ID']].groupby('Start_Time').count().reset_index()
 hour['cases'] = ((hour['ID']/len(data_clean['ID']))*100).apply(lambda x: '{0:.2f}%'.format(x))
 
+#Plot to explore the hour of the day with most accidents cases
 fig, ax = plt.subplots(figsize=(16,5))
 ax.spines['top'].set_visible(False) # removing the top spine of the border
 ax.spines['right'].set_visible(False) # removing the right spine of the border
