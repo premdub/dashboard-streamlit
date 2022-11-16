@@ -3,19 +3,25 @@ import pandas as pd
 import numpy as np
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter
 import matplotlib.dates as mdates
 import seaborn as sb
 from pandas.api.types import CategoricalDtype
 import inline
+#import inline
 import splot
 import containers
 import seaborn as sns
 import pydeck as pdk
+<<<<<<< HEAD
 import pip
 pip.main(["install","matplotlib"])
 
+=======
+import matplotlib.pyplot as plt
+import pip
+pip.main(["install","matplotlib"])
+>>>>>>> 7262039fbefef7708fad26228c163012c6d08531
 st.title('Bay Wheels trip data')
 
 
