@@ -8,20 +8,17 @@ import matplotlib.dates as mdates
 import seaborn as sb
 from pandas.api.types import CategoricalDtype
 import inline
-#import inline
+import inline
 import splot
 import containers
 import seaborn as sns
 import pydeck as pdk
-<<<<<<< HEAD
 import pip
 pip.main(["install","matplotlib"])
 
-=======
 import matplotlib.pyplot as plt
 import pip
 pip.main(["install","matplotlib"])
->>>>>>> 7262039fbefef7708fad26228c163012c6d08531
 st.title('Bay Wheels trip data')
 
 
