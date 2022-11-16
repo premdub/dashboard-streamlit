@@ -13,9 +13,6 @@ import splot
 import containers
 import seaborn as sns
 import pydeck as pdk
-import pip
-pip.main(["install","matplotlib"])
-
 import matplotlib.pyplot as plt
 
 st.title('Bay Wheels trip data')
