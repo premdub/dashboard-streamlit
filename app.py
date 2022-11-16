@@ -51,23 +51,28 @@ filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 st.subheader('Map of all pickups at %s:00' % hour_to_filter)
 st.map(filtered_data)
 
-#-----------------------------------------------------------
+#-----------------------------------------------------------------------------------
 st.title('US_Accidents_Dec21')
-
-DATA_URL = ('dataset/US_Accidents_Dec21.csv')
-#@st.cache
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
 st.subheader('DATASET #2: US_Accidents_Dec21')
 
+DATE_COLUMN_ = 'date/time'
+DATA_URL_ = ('dataset/US_Accidents_Dec21.csv')
+#@st.cache
+def load_data(nrows):
+    dataa = pd.read_csv(DATA_URL_, nrows=nrows)
+    lowercase = lambda x: str(x).lower()
+    dataa.rename(lowercase, axis='columns', inplace=True)
+    dataa[DATE_COLUMN_] = pd.to_datetime(dataa[DATE_COLUMN_])
+    return dataa
+
+
 data_load_state = st.text('Loading data...')
-data = load_data(10000)
+dataa = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
+if st.checkbox('Show raw data_'):
+    st.subheader('Raw data_')
+    st.write(dataa)
 
 st.subheader('US States -Ranked by Population 2022')
 st.subheader('Map of all States:Car accidents countrywide')
@@ -110,8 +115,8 @@ st.pydeck_chart(pdk.Deck(
 #---------------------------
 
 DATA_URL = ('dataset/US_Accidents_Dec21.csv')
-data = pd.read_csv(DATA_URL)
-data_clean = data.copy()
+dataa = pd.read_csv(DATA_URL)
+data_clean = dataa.copy()
 # changing strings to datetime and int to strings
 data_clean['Start_Time'] = pd.to_datetime(data_clean['Start_Time'])
 data_clean['End_Time'] = pd.to_datetime(data_clean['End_Time'])
@@ -124,9 +129,9 @@ start_day = data_clean['Start_Time'].dt.strftime('%A') # extracting day from dat
 start_month = data_clean['Start_Time'].dt.strftime('%b') # extracting month from date
 
 #define the hour of the day with most accidents cases
-data = pd.DataFrame(start_hour.sort_values())
-data['ID'] = 1
-hour = data[['Start_Time','ID']].groupby('Start_Time').count().reset_index()
+dataa = pd.DataFrame(start_hour.sort_values())
+dataa['ID'] = 1
+hour = dataa[['Start_Time','ID']].groupby('Start_Time').count().reset_index()
 hour['cases'] = ((hour['ID']/len(data_clean['ID']))*100).apply(lambda x: '{0:.2f}%'.format(x))
 
 #Plot to explore the hour of the day with most accidents cases
