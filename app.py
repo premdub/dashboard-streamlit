@@ -142,3 +142,4 @@ plt.xlabel('Hour of the day',fontsize=13)
 plt.ylabel('Count',fontsize=13)
 plt.title('Count of acidents per hour',fontsize=8);
 
+st.pyplot(fig)
