@@ -2,9 +2,10 @@
 HHA507-assignment10
 
 The dashboard contain:
-   -Title/Header/Subheader
-   -2 dataframes
-   - code-block on each chart
+
+     - Title/Header/Subheader
+     - 2 dataframes
+     - code-block on each chart
 
 Azure used to deploy the streamlit application:
 
