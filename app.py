@@ -21,7 +21,7 @@ st.title('Bay Wheels trip data')
 DATE_COLUMN = 'date/time'
 DATA_URL = ('dataset/Bay_Wheels_trip_data_for_public_use2020.csv')
 
-st.subheader('DATASET #1:  Bay Wheels trip history data')
+
 #@st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
@@ -33,23 +33,33 @@ def load_data(nrows):
 data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
-
+st.subheader('DATASET #1:  Ford-go-Bike Trip Data')
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
 
-st.subheader('Number of pickups by hour')
+st.subheader('Number of bike pickups by hour')
 hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
 st.bar_chart(hist_values)
+
+
+code = '''st.subheader('Number of bike pickups by hour')
+hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
+st.bar_chart(hist_values)'''
+st.code(code, language='python')
+
 
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
 filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
-
-
 st.subheader('Map of all pickups at %s:00' % hour_to_filter)
 st.map(filtered_data)
+
+code = '''st.subheader('Map of all pickups at %s:00' % hour_to_filter)
+st.map(filtered_data)'''
+st.code(code, language='python')
+
 
 #-----------------------------------------------------------------------------------
 st.title('US_Accidents_Dec21')
@@ -75,11 +85,17 @@ if st.checkbox('Show raw data_'):
     st.write(dataa)
 
 st.subheader('US States -Ranked by Population 2022')
-st.subheader('Map of all States:Car accidents countrywide')
+st.subheader('Map of all States: Car Accidents Countrywide')
 st.map(filtered_data)
+
+code = '''st.subheader('US States -Ranked by Population 2022')
+st.subheader('Map of all States:Car accidents countrywide')
+st.map(filtered_data)'''
+st.code(code, language='python')
+
 #------------------------------------------------
 #import pydeck as pdk
-st.subheader('Car accidents countrywide, within the USA')
+st.subheader('Car Accidents Countrywide, Within the USA')
 df = pd.DataFrame(
    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
    columns=['lat', 'lon'])
@@ -112,6 +128,39 @@ st.pydeck_chart(pdk.Deck(
         ),
     ],
 ))
+
+
+
+code = '''st.pydeck_chart(pdk.Deck(
+    map_style=None,
+    initial_view_state=pdk.ViewState(
+        latitude=37.76,
+        longitude=-122.4,
+        zoom=11,
+        pitch=50,
+    ),
+    layers=[
+        pdk.Layer(
+            'HexagonLayer',
+            data=df,
+            get_position='[lon, lat]',
+            radius=200,
+            elevation_scale=4,
+            elevation_range=[0, 1000],
+            pickable=True,
+            extruded=True,
+        ),
+        pdk.Layer(
+            'ScatterplotLayer',
+            data=df,
+            get_position='[lon, lat]',
+            get_color='[200, 30, 0, 160]',
+            get_radius=200,
+        ),
+    ],
+))'''
+st.code(code, language='python')
+
 #---------------------------
 
 DATA_URL = ('dataset/US_Accidents_Dec21.csv')
@@ -145,3 +194,16 @@ plt.ylabel('Count',fontsize=20)
 plt.title('Count of acidents per hour',fontsize=29);
 
 st.pyplot(fig)
+
+
+code = '''fig, ax = plt.subplots(figsize=(16,5))
+ax.spines['top'].set_visible(False) # removing the top spine of the border
+ax.spines['right'].set_visible(False) # removing the right spine of the border
+splot = sb.barplot(data = hour,x='Start_Time',y='ID',color=sb.color_palette()[0])
+plt.bar_label(splot.containers[0],labels=hour['cases'],fontsize=15);
+plt.xlabel('Hour of the day',fontsize=20)
+plt.ylabel('Count',fontsize=20)
+plt.title('Count of acidents per hour',fontsize=29);
+
+st.pyplot(fig)'''
+st.code(code, language='python')
