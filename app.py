@@ -129,8 +129,6 @@ st.pydeck_chart(pdk.Deck(
     ],
 ))
 
-
-
 code = '''st.pydeck_chart(pdk.Deck(
     map_style=None,
     initial_view_state=pdk.ViewState(
