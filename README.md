@@ -30,13 +30,20 @@ Azure used to deploy the streamlit application:
    
    
 Installing & setting up Streamlit:  
+
     -install pipenv
+    
         -pip3 install pipenv
+        
     
 Create a new environment with Streamlit:
+
      - pipenv shell
+     
      - pip install streamlit
+     
 
 Use your new environment #running:
+
      -streamlit run  myfile.py
 
