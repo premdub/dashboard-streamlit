@@ -162,7 +162,6 @@ code = '''st.pydeck_chart(pdk.Deck(
 st.code(code, language='python')
 
 #---------------------------
-
 DATA_URL = ('dataset/US_Accidents_Dec21.csv')
 dataa = pd.read_csv(DATA_URL)
 data_clean = dataa.copy()
