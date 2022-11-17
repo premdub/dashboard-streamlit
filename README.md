@@ -1,25 +1,23 @@
 # dashboard-streamlit
 HHA507-assignment10
-1. Please create a new repo called 'dashboard-streamlit' 
 
-2. Create a basic streamlit dashboard with data that you have access to (e.g., de-identified data from a group project, or data that you find interesting that is publicly available). The data that you select should have at least one (if not more) of the following fields to be able to complete Step 3 of this assignment:
-Date/time stamp 
-Categorical data
-Continuous data 
-OPTIONAL: position/locational data 
-The dashboard code and data being used should be included within the github repo 
+The dashboard contain:
+   -Title/Header/Subheader
+   -2 dataframes
+   - code-block on each chart
 
-3. The dashboard should include the following components based on the streamlit documentation (https://docs.streamlit.io/library/api-reference) of what is available: 
-a header 
-some text 
-a code-block 
-2 dataframes
-at least 2 charts (e.g., line, area, bar, scatter plot) 
-
-
-
-Azure used to deploy the streamlit application
-
+Azure used to deploy the streamlit application:
+   -streamlit on Azure
+   -Connect to VM- ssh username@IP and then enter Password
+   -sudo apt-get update
+   -sudo apt install python3-pip
+   -pip3 install streamlit
+   -nano ~/.bashrc
+   -Add: export PATH="$HOME/.local/bin:$PATH" to the file
+   -Restart with: source ~/.bashrc
+   -git clone respository. cd into directory. git pull origin main to update
+   -streamlit run app.py
+   
 Installing & setting up Streamlit:  
 -install pipenv
     -pip3 install pipenv
