@@ -8,25 +8,25 @@ The dashboard contain:
 
 Azure used to deploy the streamlit application:
 
-   -streamlit on Azure
+      -streamlit on Azure
    
-   -Connect to VM- ssh username@IP and then enter Password
+      -Connect to VM- ssh username@IP and then enter Password
    
-   -sudo apt-get update
+      -sudo apt-get update
    
-   -sudo apt install python3-pip
+      -sudo apt install python3-pip
    
-   -pip3 install streamlit
+      -pip3 install streamlit
    
-   -nano ~/.bashrc
+      -nano ~/.bashrc
    
-   -Add: export PATH="$HOME/.local/bin:$PATH" to the file
+      -Add: export PATH="$HOME/.local/bin:$PATH" to the file
    
-   -Restart with: source ~/.bashrc
+      -Restart with: source ~/.bashrc
    
-   -git clone respository. cd into directory. git pull origin main to update
+      -git clone respository. cd into directory. git pull origin main to update
    
-   -streamlit run app.py
+      -streamlit run app.py
    
    
 Installing & setting up Streamlit:  
